@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>{% block title %}{% endblock title %}</title>
+
+  <!-- font awesome style -->
+  <link href="{%static 'app/css/font-awesome.min.css'%}" rel="stylesheet" />
+  <!-- lightbox -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{%static 'app/css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{%static 'app/css/style.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{%static 'app/css/responsive.css'%}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url "index" %}">
+            <img src="images/logo.png" alt="" />
+            <span>
+              Dog Adoption
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url "index" %}"> Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "about" %}"> About </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "gallery" %}"> Gallery </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pr-lg-0" href="{% url "contact" %}"> Contact us</a>
+              </li>
+              
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <form method="POST" action='{% url "logoutuser" %}'>
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link pr-lg-0">Logout</button>
+                </form>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link pr-lg-0" href="{% url "signupuser" %}"> Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link pr-lg-0" href="{% url "loginuser" %}"> Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+{% block content %}
+
+
+{% endblock content %}
+
+ <!-- info section -->
+ <section class="info_section">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="info_logo">
+            <div>
+              <a href="">
+                <img src="images/logo.png" alt="" />
+                <span>
+                  Dog Adoption
+                </span>
+              </a>
+            </div>
+            <p>
+                Searching for new loyal friend?
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_links ">
+            <h5>
+              Get in touch
+            </h5>
+            <div class="info_contact">
+              <div class="contact_link_box">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    Location
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span>
+                    Call +977 9876543521
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span>
+                    dog@gmail.com
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="info_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="info_insta">
+            <h5>
+              INFORMATION
+            </h5>
+            <p class="pr-0 pr-md-4 pr-md-5">
+              They need you and you need them
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="pl-0 pl-lg-5 pl-md-4">
+            <h5>
+              Our Shop
+            </h5>
+            <p>
+              We don't sell, we gift you the best present.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+ 
+
+  <script src="{%static 'app/js/jquery-3.4.1.min.js'%}"></script>
+  <script src="js/bootstrap.js"></script>
+  <!-- lightbox -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js  "></script>
+  <!-- custom js -->
+  <script src="{%static 'app/js/custom.js'%}"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>

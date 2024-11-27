@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block content %}
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom layout_padding2-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="img-box">
+            <img src="{% static "app/images/about-img.jpg" %} " alt="" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Us
+                <hr>
+              </h2>
+            </div>
+            <p>
+              Welcome to our Dog Adoption Platform, a dedicated space connecting dogs in need with loving families. Our mission is to make the adoption process easy, transparent, and rewarding for both adopters and pets alike. Here, you’ll find profiles of dogs with details like their name, breed, age, and unique personality traits, helping you find a perfect match.
+
+With a simple sign-up process, potential adopters can submit adoption forms, while our dedicated team manages each application to ensure a seamless experience. We believe every dog deserves a loving home, and our platform is here to help make that happen. Join us in giving these wonderful dogs a second chance at happiness!
+            </p>
+            <a href="">
+              <span>
+                Read More
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+{% endblock content %}

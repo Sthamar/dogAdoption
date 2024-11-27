@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div class="slider_bg_box">
+        <img src="{% static 'app/images/slider-bg.jpg' %}" alt="">
+      </div>
+      <div class="container">
+        
+                <div class="col-md-7 col-lg-6">
+                  <div class="detail-box">
+                    <h1>
+                      Welcome to
+                      <br>Dog Adoption
+                    </h1>
+                    <p>
+                      From here you will start your new journey with your new friend.
+                      Best wishes.
+                    </p>
+                  </div>
+                </div>
+             
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- gallery section -->
+
+  <div class="gallery_section ">
+    <div class="container-fluid">
+      <div class="heading_container heading_center">
+        <h2>
+          <hr>
+          Gallery
+          <hr>
+        </h2>
+      </div>
+      <div class="row">
+        {% for dog in dogs %}
+        <div class=" col-sm-8 col-md-6 px-0">
+          <div class="img-box">
+            <img src="{{dog.image.url}}" alt="">
+            <div class="btn-box">
+              {% if user.is_authenticated %}
+              <a href="{%url 'detail_page' dog.slug %}" class="btn-1">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+              </a>
+              {% else %}
+              <a href="{%url 'loginuser' %}" class="btn-1">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        
+    </div>
+  </div>
+
+  <!-- end gallery section -->
+
+
+
+  {% endblock content %}
+
+{% load static %}

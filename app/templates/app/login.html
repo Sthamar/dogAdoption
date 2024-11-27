@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'app/css/login.css' %}" rel="stylesheet" />
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="form-container">
+            <h1>Login</h1>
+
+            <!-- Display general message -->
+            <p>{{ msg }}</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                
+                <!-- Render form fields -->
+                {{ form.as_p }}
+
+                <!-- Display field errors next to each field -->
+                {% for field in form %}
+                    <div>
+                        {% if field.errors %}
+                            <div class="error">
+                                <ul>
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="submit">Login</button>
+            </form>
+
+            <div class="text">
+                <p>Don't have an account? <a href="{% url 'signupuser' %}">Register Now</a></p>
+            </div>
+        </div>
+    </body>
+</html>
